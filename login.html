@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini-Market | Entrar ou Cadastrar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-logo">
+        <div class="brand-ball"></div>
+      </div>
+      <h1 id="auth-title">Mini-Market</h1>
+      <p id="auth-subtitle">Loja dos mió amigos</p>
+    </div>
+
+    <!-- Abas de Seleção -->
+    <div class="auth-tabs" role="tablist">
+      <button type="button" id="tab-login" class="auth-tab-btn active" role="tab">Entrar</button>
+      <button type="button" id="tab-register" class="auth-tab-btn" role="tab">Criar Conta</button>
+    </div>
+
+    <!-- Mensagens de Alerta -->
+    <div id="auth-alert" class="alert-box" role="alert"></div>
+
+    <!-- Formulário de Login -->
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email" class="form-label">E-mail</label>
+        <div class="input-wrapper">
+          <input 
+            type="email" 
+            id="login-email" 
+            class="form-input" 
+            placeholder="seu@email.com" 
+            required 
+            autocomplete="email"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password" class="form-label">Senha</label>
+        <div class="input-wrapper">
+          <input 
+            type="password" 
+            id="login-password" 
+            class="form-input" 
+            placeholder="Digite sua senha" 
+            required 
+            autocomplete="current-password"
+          >
+          <button type="button" id="toggle-login-pass" class="input-addon-btn">Ver</button>
+        </div>
+      </div>
+
+      <button type="submit" id="login-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+        Entrar
+      </button>
+    </form>
+
+    <!-- Formulário de Registro -->
+    <form id="register-form" style="display: none;">
+      <div class="form-group">
+        <label for="reg-email" class="form-label">E-mail</label>
+        <div class="input-wrapper">
+          <input 
+            type="email" 
+            id="reg-email" 
+            class="form-input" 
+            placeholder="seu@email.com" 
+            required 
+            autocomplete="email"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-password" class="form-label">Senha</label>
+        <div class="input-wrapper">
+          <input 
+            type="password" 
+            id="reg-password" 
+            class="form-input" 
+            placeholder="Mínimo 6 caracteres" 
+            required 
+            autocomplete="new-password"
+          >
+          <button type="button" id="toggle-reg-pass" class="input-addon-btn">Ver</button>
+        </div>
+        <div class="form-hint">Mínimo de 6 caracteres.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-role" class="form-label">Tipo de Conta</label>
+        <select id="reg-role" class="form-select">
+          <option value="client" selected>Cliente (Comprar produtos)</option>
+          <option value="admin">Administrador (Gerenciar produtos)</option>
+        </select>
+      </div>
+
+      <button type="submit" id="register-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+        Criar Conta
+      </button>
+    </form>
+
+    <div style="margin-top: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); background: #f9fafb; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+      <strong>Contas de Teste:</strong><br>
+      Admin: <code>admin@loja.com</code> | Senha: <code>admin123</code><br>
+      Cliente: <code>cliente@loja.com</code> | Senha: <code>cliente123</code>
+    </div>
+  </div>
+
+  <script src="frontend/js/login.js"></script>
+</body>
+</html>

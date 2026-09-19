@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini-Market | Loja dos mió amigos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de Navegação Superior -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="client.html" class="brand-logo">
+        <div class="brand-ball"></div>
+        <span>Mini-Market</span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Botão para o Admin Voltar à Gestão de Produtos -->
+        <a href="admin.html" id="admin-panel-link" class="btn btn-dark" style="display: none;" title="Voltar ao Painel Administrativo">
+          Gerenciar Produtos
+        </a>
+
+        <div class="user-badge">
+          <span>Olá, <strong id="user-name">Carregando...</strong></span>
+          <span id="user-role" class="role-tag">Cliente</span>
+        </div>
+
+        <a href="carrinho.html" class="btn-carrinho-badge" id="btn-carrinho">
+          <span>Carrinho</span>
+          <span id="cart-count" class="badge-count" style="display: none;">0</span>
+        </a>
+
+        <button type="button" id="btn-logout" class="btn btn-outline" title="Encerrar Sessão">
+          Sair
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Limpo -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1>Loja dos mió amigos</h1>
+      <p>Pelúcias e companheiros Pokémon com qualidade oficial e entrega rápida.</p>
+    </div>
+  </section>
+
+  <!-- Barra de Busca -->
+  <div class="controls-bar">
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="search-input" 
+        class="search-input" 
+        placeholder="Buscar pelo nome do Pokémon ou categoria..."
+        autocomplete="off"
+      >
+    </div>
+
+    <div>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">
+        Produtos em destaque
+      </span>
+    </div>
+  </div>
+
+  <!-- Vitrine de Produtos -->
+  <main class="vitrine-container">
+    <h2 class="section-title">Nossos Produtos</h2>
+   
+    <div class="grid-produtos" id="grid-produtos">
+      <!-- Cards renderizados dinamicamente via client.js -->
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="main-footer">
+    <p>Mini-Market &copy; 2026 - Loja dos mió amigos. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="frontend/js/client.js"></script>
+</body>
+</html>

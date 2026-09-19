@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini-Market | Painel Administrativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Topbar do Painel Admin -->
+  <header class="main-header">
+    <div class="header-container">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <a href="admin.html" class="brand-logo">
+          <div class="brand-ball"></div>
+          <span>Painel Administrativo</span>
+        </a>
+        <span class="role-tag admin">Admin</span>
+      </div>
+
+      <div class="nav-actions">
+        <div class="user-badge">
+          <span>Usuário: <strong id="admin-email">admin@loja.com</strong></span>
+        </div>
+
+        <a href="client.html" class="btn btn-outline" title="Ir para a loja">
+          Visualizar Loja
+        </a>
+
+        <button type="button" id="btn-logout" class="btn btn-danger" style="padding: 0.5rem 0.85rem;">
+          Sair
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal do Admin -->
+  <main class="admin-layout">
+    
+    <!-- Linha de Indicadores e Métricas (KPIs) -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h4>Total de Produtos</h4>
+          <div class="kpi-value" id="kpi-total-products">0</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h4>Preço Médio</h4>
+          <div class="kpi-value" id="kpi-avg-price">R$ 0,00</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h4>Servidor Backend</h4>
+          <div class="kpi-value" id="kpi-api-status" style="font-size: 1.15rem; color: var(--success);">Online</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid: Formulário de Cadastro + Tabela do Catálogo -->
+    <div class="admin-grid">
+
+      <!-- Coluna Esquerda: Cadastro de Produto -->
+      <section class="admin-card">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem;">Cadastrar Novo Produto</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+          Preencha os dados do item para disponibilizar na loja.
+        </p>
+
+        <form id="form-add-product">
+          <div class="form-group">
+            <label for="prod-name" class="form-label">Nome do Produto *</label>
+            <input 
+              type="text" 
+              id="prod-name" 
+              class="form-input" 
+              placeholder="Ex: Pelúcia Snorlax 30cm" 
+              required
+            >
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label for="prod-price" class="form-label">Preço (R$) *</label>
+              <input 
+                type="number" 
+                id="prod-price" 
+                class="form-input" 
+                placeholder="199.90" 
+                step="0.01" 
+                min="0.10" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="prod-category" class="form-label">Categoria</label>
+              <select id="prod-category" class="form-select">
+                <option value="Pelúcias" selected>Pelúcias</option>
+                <option value="Colecionáveis">Colecionáveis</option>
+                <option value="Acessórios">Acessórios</option>
+                <option value="Diversos">Diversos</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-image" class="form-label">URL da Imagem</label>
+            <input 
+              type="url" 
+              id="prod-image" 
+              class="form-input" 
+              placeholder="https://exemplo.com/imagem.png"
+            >
+            <div id="img-preview-box" class="image-preview-box">
+              <span>Pré-visualização da imagem</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-desc" class="form-label">Descrição</label>
+            <textarea 
+              id="prod-desc" 
+              class="form-input" 
+              rows="3" 
+              placeholder="Detalhes sobre o produto..."
+              style="resize: vertical;"
+            ></textarea>
+          </div>
+
+          <button type="submit" id="btn-submit-product" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+            Adicionar Produto
+          </button>
+        </form>
+      </section>
+
+      <!-- Coluna Direita: Gestão do Catálogo -->
+      <section class="admin-card">
+        <div style="margin-bottom: 1rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700;">Catálogo de Produtos</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Gerencie ou exclua os produtos disponíveis</p>
+        </div>
+
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th style="text-align: right;">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-tbody">
+              <!-- Renderizado dinamicamente via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="main-footer">
+    <p>Mini-Market &copy; 2026 - Painel Administrativo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="frontend/js/admin.js"></script>
+</body>
+</html>
